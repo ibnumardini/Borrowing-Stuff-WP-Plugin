@@ -209,9 +209,7 @@ class Borrowing_Stuff_Admin
 
         global $wpdb;
 
-        $stuffs = $wpdb->get_results(
-            $wpdb->prepare("SELECT * FROM " . $this->activator->tbl_stuffs() . " ORDER BY created_at DESC")
-        );
+        $stuffs = $wpdb->get_results("SELECT * FROM " . $this->activator->tbl_stuffs() . " ORDER BY created_at DESC");
 
         ob_start();
 
@@ -228,9 +226,7 @@ class Borrowing_Stuff_Admin
 
         global $wpdb;
 
-        $stuffs = $wpdb->get_results(
-            $wpdb->prepare("SELECT * FROM " . $this->activator->tbl_stuffs() . " ORDER BY created_at DESC")
-        );
+        $stuffs = $wpdb->get_results( "SELECT * FROM " . $this->activator->tbl_stuffs() . " ORDER BY created_at DESC");
 
         if (isset($_POST['create_borrowing'])) {
 
@@ -275,9 +271,7 @@ class Borrowing_Stuff_Admin
         if (isset($_GET['action'])) {
             if ($_GET['action'] == "edit-borrowing") {
 
-                $stuffs = $wpdb->get_results(
-                    $wpdb->prepare("SELECT * FROM " . $this->activator->tbl_stuffs() . " ORDER BY created_at DESC")
-                );
+                $stuffs = $wpdb->get_results( "SELECT * FROM " . $this->activator->tbl_stuffs() . " ORDER BY created_at DESC");
 
                 $borrowed = $this->edit_borrowing();
             } else if ($_GET['action'] == "delete-borrowing") {
@@ -295,9 +289,7 @@ class Borrowing_Stuff_Admin
             }
         }
 
-        $borrowing = $wpdb->get_results(
-            $wpdb->prepare("SELECT b.id, borrower, s.name as stuff FROM " . $this->activator->tbl_borrowing_transactions() . " as b LEFT JOIN " . $this->activator->tbl_stuffs() . " as s ON s.id = b.stuff_id ORDER BY b.created_at DESC")
-        );
+        $borrowing = $wpdb->get_results( "SELECT b.id, borrower, s.name as stuff FROM " . $this->activator->tbl_borrowing_transactions() . " as b LEFT JOIN " . $this->activator->tbl_stuffs() . " as s ON s.id = b.stuff_id ORDER BY b.created_at DESC");
 
         ob_start();
 
@@ -368,7 +360,7 @@ class Borrowing_Stuff_Admin
                 $stuff = $this->edit_stuff($id);
 
                 echo json_encode($stuff);
-                
+
             } else if ($param == "store_edit_stuff") {
 
                 $id = trim(htmlspecialchars($_POST['data'][0]));
@@ -402,9 +394,7 @@ class Borrowing_Stuff_Admin
 
                 $id = trim(htmlspecialchars($_POST['id']));
 
-                $borrowing = $wpdb->get_results(
-                    $wpdb->prepare("SELECT b.id, borrower, s.name as stuff, s.desc as stuff_desc FROM " . $this->activator->tbl_borrowing_transactions() . " as b LEFT JOIN " . $this->activator->tbl_stuffs() . " as s ON s.id = b.stuff_id WHERE b.id = $id")
-                );
+                $borrowing = $wpdb->get_results( "SELECT b.id, borrower, s.name as stuff, s.desc as stuff_desc FROM " . $this->activator->tbl_borrowing_transactions() . " as b LEFT JOIN " . $this->activator->tbl_stuffs() . " as s ON s.id = b.stuff_id WHERE b.id = $id");
 
                 echo json_encode($borrowing[0]);
             } else if ($param == "get_stuff") {

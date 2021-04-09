@@ -67,8 +67,8 @@
             <h3>All Borrowing</h3>
 
             <hr>
-            <div class="alert alert-<?=$alert[1]?> mt-2" style="display: <?= ($alert[0]) ? $alert[0] : "none" ?>" role="alert">
-                <?=$alert[2]?>
+            <div class="alert alert-<?=(!empty($alert[1])) ? $alert[1] : ''?> mt-2" style="display: <?= (!empty($alert[0])) ? $alert[0] : "none" ?>" role="alert">
+                <?=(!empty($alert[2])) ? $alert[2] : ''?>
             </div>
             <table class="table table-striped table-bordered">
                 <thead>

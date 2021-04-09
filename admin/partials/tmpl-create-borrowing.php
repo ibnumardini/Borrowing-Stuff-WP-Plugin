@@ -23,8 +23,8 @@
     <div class="row">
         <div class="col-6">
 
-            <div class="alert alert-<?=$alert[1]?> mt-2" style="display: <?= ($alert[0]) ? $alert[0] : "none" ?>" role="alert">
-                <?=$alert[2]?>
+            <div class="alert alert-<?=(!empty($alert[1])) ? $alert[1] : ''?> mt-2" style="display: <?=(!empty($alert[0])) ? $alert[0] : "none"?>" role="alert">
+                <?=(!empty($alert[2])) ? $alert[2] : ''?>
             </div>
 
             <form method="post">
@@ -38,9 +38,9 @@
                         <option>Select Stuff</option>
                         <?php
 
-                            foreach ($stuffs as $key => $stuff) {
-                                echo "<option value='$stuff->id'>$stuff->name</option>";
-                            }
+                        foreach ($stuffs as $key => $stuff) {
+                            echo "<option value='$stuff->id'>$stuff->name</option>";
+                        }
 
                         ?>
                     </select>
